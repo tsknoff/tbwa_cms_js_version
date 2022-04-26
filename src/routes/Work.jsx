@@ -19,6 +19,7 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import EditIcon from '@mui/icons-material/Edit';
 import {Switch} from "@mui/material";
+import DraggableList from "react-draggable-list";
 
 const Work = () => {
 
@@ -28,72 +29,38 @@ const Work = () => {
         {id: 2, preview: 'https://tbwa.ru/assets/work/%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F_cover.jpg',  client: 'Delivery Club', title: 'Велосипедизация', link: ''},
         {id: 3, preview: 'https://tbwa.ru/assets/work/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-flex2.jpg', client: 'Flexity', title: 'Пространство, чтобы процветать', link: ''},
         {id: 4, preview: 'https://tbwa.ru/assets/work/CORAL-TRAVEL-%D1%8F%D1%85%D1%82%D0%B0-2.jpg', client: 'Coral Travel', title: 'Яхта. Океан. Ты', link: ''},
+
+
     ])
 
-    // const onWorkItemsChange = (newWorkItems) => {
-    //     set_workItems(newWorkItems);
-    // };
+     const onWorkItemsChange = (newWorkItems) => {
+         set_workItems(newWorkItems);
+     };
 
     const containerRef = useRef();
 
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
-    const WorkItem = ({item}) => {
+    const WorkItem = ({item, itemSelected, dragHandleProps}) => {
 
-        //const { onMouseDown, onTouchStart } = dragHandleProps;
+        const { onMouseDown, onTouchStart } = dragHandleProps;
 
         return(
-            // <TableRow
-            //     key={item.id}
-            //     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            // >
-            //     <TableCell component="th" scope="row">
-            //         <img width="120px" src={item.preview} />
-            //     </TableCell>
-            //     <TableCell align="left">{item.client}</TableCell>
-            //     <TableCell align="left">{item.title}</TableCell>
-            //     <TableCell align="center">
-            //         <IconButton>
-            //             <EditIcon color="inherit" sx={{ display: 'block' }} />
-            //         </IconButton>
-            //         <IconButton>
-            //             <PreviewIcon color="inherit" sx={{ display: 'block' }} />
-            //         </IconButton>
-            //     </TableCell>
-            //     <TableCell align="right">
-            //         <Switch {...label} />
-            //     </TableCell>
-            //     <TableCell align="right">
-            //         <IconButton>
-            //             <DragIndicatorIcon
-            //                 color="inherit"
-            //                 sx={{ display: 'block' }}
-            //                 onTouchStart={(e) => {
-            //                     e.preventDefault();
-            //                     document.body.style.overflow = "hidden";
-            //                     onTouchStart(e);
-            //                 }}
-            //                 onMouseDown={(e) => {
-            //                     console.log("mouseDown");
-            //                     document.body.style.overflow = "hidden";
-            //                     onMouseDown(e);
-            //                 }}
-            //                 onTouchEnd={(e) => {
-            //                     document.body.style.overflow = "visible";
-            //                 }}
-            //                 onMouseUp={() => {
-            //                     document.body.style.overflow = "visible";
-            //                 }}
-            //             />
-            //         </IconButton>
-            //     </TableCell>
-            // </TableRow>
-            <Grid item key={item.id}>
-                <Grid item xs>
+            <Grid item container
+                  key={item.id}
+                  xs={12}
+                  sx={{height: 100 }}
+                  direction="row"
+                  alignItems="center">
+                <Grid item xs={2} >
                     <img alt="case preview" width="120px" src={item.preview} />
                 </Grid>
-                <Grid item >{item.client}</Grid>
-                <Grid item >{item.title}</Grid>
-                <Grid item >
+                <Grid item xs={2}>
+                    {item.client}
+                </Grid>
+                <Grid item xs={3}>
+                    {item.title}
+                </Grid>
+                <Grid item xs={3}>
                     <IconButton>
                         <EditIcon color="inherit" sx={{ display: 'block' }} />
                     </IconButton>
@@ -101,30 +68,30 @@ const Work = () => {
                         <PreviewIcon color="inherit" sx={{ display: 'block' }} />
                     </IconButton>
                 </Grid>
-                <Grid item>
+                <Grid item xs={1}>
                     <Switch {...label} />
                 </Grid>
-                <Grid item>
+                <Grid item xs={1}>
                     <IconButton>
                         <DragIndicatorIcon
                             color="inherit"
                             sx={{ display: 'block' }}
-                            // onTouchStart={(e) => {
-                            //     e.preventDefault();
-                            //     document.body.style.overflow = "hidden";
-                            //     onTouchStart(e);
-                            // }}
-                            // onMouseDown={(e) => {
-                            //     console.log("mouseDown");
-                            //     document.body.style.overflow = "hidden";
-                            //     onMouseDown(e);
-                            // }}
-                            // onTouchEnd={(e) => {
-                            //     document.body.style.overflow = "visible";
-                            // }}
-                            // onMouseUp={() => {
-                            //     document.body.style.overflow = "visible";
-                            // }}
+                            onTouchStart={(e) => {
+                                e.preventDefault();
+                                document.body.style.overflow = "hidden";
+                                onTouchStart(e);
+                            }}
+                            onMouseDown={(e) => {
+                                console.log("mouseDown");
+                                document.body.style.overflow = "hidden";
+                                onMouseDown(e);
+                            }}
+                            onTouchEnd={(e) => {
+                                document.body.style.overflow = "visible";
+                            }}
+                            onMouseUp={() => {
+                                document.body.style.overflow = "visible";
+                            }}
                         />
                     </IconButton>
                 </Grid>
@@ -175,7 +142,7 @@ const Work = () => {
             {/*    No work cases for yet*/}
             {/*</Typography>*/}
             <TableContainer >
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <Table aria-label="simple table">
                     <TableHead >
                         <TableRow>
                             <TableCell>Preview</TableCell>
@@ -186,28 +153,24 @@ const Work = () => {
                             <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody ref={containerRef}>
-                        {/*<DraggableList*/}
-                        {/*    itemKey="id"*/}
-                        {/*    template={WorkItem}*/}
-                        {/*    list={workItems}*/}
-                        {/*    onMoveEnd={(newList) => onWorkItemsChange(newList)}*/}
-                        {/*    container={() => containerRef.current}*/}
-                        {/*/>*/}
-
-                        {/*{workItems.map((item) => (*/}
-                        {/*    <WorkItem item={item} />*/}
-                        {/*))}*/}
-
-                    </TableBody>
                 </Table>
-                <Grid container spacing={3} alignItems="center">
-                    {workItems.map((item) => (
-                        <WorkItem item={item} />
-                    ))}
-                </Grid>
-
             </TableContainer>
+            <Grid container
+                  ref={containerRef}
+                  xs={12}
+                  direction="column"
+            >
+                {/*{workItems.map((item) => (*/}
+                {/*    <WorkItem item={item} />*/}
+                {/*))}*/}
+                <DraggableList
+                    itemKey="id"
+                    template={WorkItem}
+                    list={workItems}
+                    onMoveEnd={(newList) => onWorkItemsChange(newList)}
+                    container={() => containerRef.current}
+                />
+            </Grid>
 
 
 
