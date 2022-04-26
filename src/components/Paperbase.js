@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Navigator from './Navigator';
-import Content from './Content';
 import Header from './Header';
 import { Outlet } from "react-router-dom";
 
@@ -25,9 +24,9 @@ function Copyright() {
 let theme = createTheme({
     palette: {
         primary: {
-            light: '#FFC900',
-            main: '#222222',
-            dark: '#000000',
+            light: '#FFFFFF',
+            main: '#FECC00',
+            dark: '#FECC00',
         },
     },
     typography: {
@@ -60,7 +59,7 @@ theme = {
         MuiDrawer: {
             styleOverrides: {
                 paper: {
-                    backgroundColor: '#222222',
+                    backgroundColor: '#101010',
                 },
             },
         },

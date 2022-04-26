@@ -12,8 +12,6 @@ import PeopleIcon from '@mui/icons-material/People';
 import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import PublicIcon from '@mui/icons-material/Public';
-import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
@@ -65,27 +63,27 @@ export default function Navigator(props) {
     return (
         <Drawer variant="permanent" {...other}>
             <List disablePadding>
-                <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
+                <ListItem sx={{ ...item, ...itemCategory, fontSize: 22 }}>
                     TBWA\CMS
                 </ListItem>
-                {/*<ListItem sx={{ ...item, ...itemCategory }}>*/}
-                {/*    <ListItemIcon>*/}
-                {/*        <HomeIcon />*/}
-                {/*    </ListItemIcon>*/}
-                {/*    <ListItemText>Project Overview</ListItemText>*/}
-                {/*</ListItem>*/}
+                <ListItem sx={{ ...item, ...itemCategory }}>
+                    <ListItemIcon>
+                        <HomeIcon />
+                    </ListItemIcon>
+                    <ListItemText>Home</ListItemText>
+                </ListItem>
                 {categories.map(({ id, children }) => (
-                    // <Box key={id} sx={{ bgcolor: '#2f4f4f' }}>
-                    <Box key={id} >
+                    <Box key={id} sx={{ bgcolor: '#202020' }}>
+                     {/*<Box key={id} >*/}
                         <ListItem sx={{ py: 2, px: 3 }}>
                             <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
                         </ListItem>
                         {children.map(({ id: childId, link, icon, active }) => (
-                            <Link to={"/"+link}>
+                            <Link className="menu-link" to={"/"+link}>
                                 <ListItem disablePadding key={childId}>
                                         <ListItemButton selected={active} sx={item}>
                                             <ListItemIcon>{icon}</ListItemIcon>
-                                            <ListItemText>{childId}</ListItemText>
+                                            <ListItemText >{childId}</ListItemText>
                                         </ListItemButton>
                                 </ListItem>
                             </Link>
