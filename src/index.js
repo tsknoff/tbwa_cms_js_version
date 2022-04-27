@@ -12,6 +12,8 @@ import {
 import Single from "./routes/Single";
 import Work from "./routes/Work";
 import NotFoundPage from "./routes/NotFoundPage";
+import OurTeam from "./routes/OurTeam";
+import Assets from "./routes/Assets";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +23,8 @@ root.render(
               <Route path="/" element={<App />}>
                   <Route path="single" element={<Single />} />
                   <Route path="work" element={<Work />} />
+                  <Route path="our-team" element={<OurTeam />} />
+                  <Route path="assets" element={<Assets />} />
                   <Route path="*" element={<NotFoundPage />} />
               </Route>
           </Routes>
