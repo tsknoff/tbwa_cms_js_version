@@ -100,7 +100,7 @@ const OurTeam = () => {
     }
 
     return (
-        <Paper sx={{ maxWidth: 800, margin: 'auto', overflow: 'auto' }}>
+        <React.Fragment>
             <AppBar
                 position="static"
                 color="default"
@@ -185,7 +185,7 @@ const OurTeam = () => {
                     container={() => containerRef.current}
                 />
             </Grid>
-        </Paper>
+        </React.Fragment>
     );
 };
 
