@@ -17,7 +17,7 @@ import PreviewIcon from "@mui/icons-material/Preview";
 import {
     CardActions,
     CardContent,
-    FormControl, FormGroup,
+    FormControl, FormControlLabel, FormGroup,
     FormHelperText,
     Input,
     InputLabel,
@@ -27,16 +27,21 @@ import {
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import {useRef, useState} from "react";
 import Divider from "@mui/material/Divider";
+import ArticleContent from "../components/blocks/ArticleContent";
+import {Link} from "react-router-dom";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 
 const Editor = () => {
     const [editBlocks, set_editBlocks] = useState([
         {
-            id: 1,
-            name: 'Article content',
-            html_id: 'article-content',
+            pageID: 1,
+            type: "case",
+            html_id: "article-content",
+            blockName: "Article content",
             params: {
-                title: 'Launch of a new Nissan Pathfinder in Russia',
-                client: 'Nissan',
                 body_title: 'A new dimension of power',
                 body_text: 'In 2022, Nissan launched the all-new Nissan Pathfinder on the Russian market. Along with this model, a new body, new design and Nissan\'s most advanced technologies have come to the market.\n' +
                     '\n' +
@@ -45,7 +50,19 @@ const Editor = () => {
                     'The created 360 ​​communication was based on the new Nissan Pathfinder versatility — the power of the legendary V6 engine, brutal design and intelligent technologies for safety and driving comfort.\n' +
                     '\n' +
                     'TBWA\\Moscow developed a wide range of materials to support the new model launch — from a TV commercial and visual design to social media materials and dealerships POSM.',
-            }},
+                awards: [ "2019 CLIO Sports — Silver \\ Social Media",
+                          "2019 CLIO Sports — Bronze \\ Integrated Campaign",
+                          "2019 Silver Mercury — Gold \\ Best sport-marketing/cyber sport marketing campaign",
+                          "2019 Silver Mercury — Short list \\ Best integrated marketing campaign"] ,
+                share: true,
+                media: [
+                    {type: "video", src: "https://player.vimeo.com/3d3c32e9-8f44-4dcf-a5c5-8a6b8f083f6a",  order: "1"},
+                    {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/Clio_HD.jpg",  order: "2"},
+                    {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/Datsun_Workout_leaflet_mockup_r12-1329.jpg",  order: "3"},
+                    {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/pasted-image-1780.jpg",  order: "4"},
+                ],
+            },
+        },
         {
             id: 2,
             name: 'Awards',
@@ -63,7 +80,7 @@ const Editor = () => {
         const { onMouseDown, onTouchStart } = dragHandleProps;
 
         return(
-            <Paper sx={{ maxWidth: 600, margin: 'auto', overflow: 'auto' }} >
+            <Paper sx={{ maxWidth: 800, margin: 'auto', overflow: 'auto' }} >
                 <AppBar
                     position="static"
                     color="default"
@@ -74,7 +91,7 @@ const Editor = () => {
                         <Grid container xs={12} direction="row" alignItems="center" >
                             <Grid item xs={11} align="left">
                                 <Typography color="inherit" variant="h7" align="center">
-                                    {item.name}
+                                    {item.blockName}
                                 </Typography>
                             </Grid>
                             <Grid item xs={1}>
@@ -107,23 +124,45 @@ const Editor = () => {
                 <Grid container padding={5} direction="column" xs={12} spacing={3}>
                     <Grid item>
                         <FormControl fullWidth>
-                            <Input id="my-input" aria-describedby="my-helper-text" defaultValue={item.params.title}/>
-                            <FormHelperText id="my-helper-text">Name of the case</FormHelperText>
+                            <TextField
+                                id="filled-textarea"
+                                label="Body title"
+                                multiline
+                                defaultValue={item.params.body_title}
+                            />
                         </FormControl>
                     </Grid>
                     <Grid item>
                         <FormControl fullWidth>
-                            <Input id="my-input" aria-describedby="my-helper-text" defaultValue={item.params.client} />
-                            <FormHelperText id="my-helper-text">Client name</FormHelperText>
+                            <TextField
+                                id="filled-textarea"
+                                label="Body text"
+                                multiline
+                                defaultValue={item.params.body_text}
+                            />
                         </FormControl>
                     </Grid>
-
-
+                    <Grid item>
+                        <FormControl fullWidth>
+                            <TextField
+                                id="filled-textarea"
+                                label="Awards"
+                                multiline
+                                defaultValue={item.params.awards}
+                            />
+                        </FormControl>
+                    </Grid>
+                    <Grid item>
+                        <FormControl fullWidth>
+                            <FormControlLabel
+                                control={
+                                    <Switch checked={item.params.share} name="share"/>
+                                }
+                                label="Social share button"
+                            />
+                        </FormControl>
+                    </Grid>
                 </Grid>
-                {/*<CardActions>*/}
-                {/*    <Button size="small">Learn More</Button>*/}
-                {/*</CardActions>*/}
-
             </Paper>
         )
     }
@@ -132,7 +171,8 @@ const Editor = () => {
     };
     const containerRef = useRef();
     return (
-        <Paper sx={{ maxWidth: 1200, margin: 'auto', overflow: 'auto' }} >
+        // <Paper sx={12} >
+        <React.Fragment>
             <AppBar
                 position="static"
                 color="default"
@@ -165,7 +205,6 @@ const Editor = () => {
             </AppBar>
             <Grid container
                   ref={containerRef}
-                  xs={12}
                   paddingTop="30px"
                   paddingBottom="30px"
                   direction="column"
@@ -183,7 +222,8 @@ const Editor = () => {
                     container={() => containerRef.current}
                 />
             </Grid>
-        </Paper>
+        {/*// </Paper>*/}
+    </React.Fragment>
     );
 };
 
