@@ -1,0 +1,56 @@
+{
+  pageID: 1,
+  type: "case",
+  html_id: "article-content",
+  blockName: "Article content",
+  params: {
+    headerImage: "https://tsknoff.ru/tbwasite/assets/work/DATSUN_ONDO_FITNESS_main_img.jpg",
+    frontImage: "https://tsknoff.ru/tbwasite/assets/work/DATSUN_ONDO_FITNESS_main_img.jpg",
+    backImage: "https://tsknoff.ru/tbwasite/assets/work/DATSUN_ONDO_FITNESS_main_img.jpg",
+    title: 'Launch of a new Nissan Pathfinder in Russia',
+    client: 'Nissan',
+    body_title: 'A new dimension of power',
+    body_text: 'In 2022, Nissan launched the all-new Nissan Pathfinder on the Russian market. Along with this model, a new body, new design and Nissan\'s most advanced technologies have come to the market.\n'
+    +
+    '\n'
+    +
+    'To launch an advertising campaign in Russia, TBWA\\Moscow developed a completely local strategy and idea align with model\'s history and its perception by the Russian audience.\n'
+    +
+    '\n'
+    +
+    'The created 360 ​​communication was based on the new Nissan Pathfinder versatility — the power of the legendary V6 engine, brutal design and intelligent technologies for safety and driving comfort.\n'
+    +
+    '\n'
+    +
+    'TBWA\\Moscow developed a wide range of materials to support the new model launch — from a TV commercial and visual design to social media materials and dealerships POSM.',
+    awards: [
+      "2019 CLIO Sports — Silver \\ Social Media",
+      "2019 CLIO Sports — Bronze \\ Integrated Campaign",
+      "2019 Silver Mercury — Gold \\ Best sport-marketing/cyber sport marketing campaign",
+      "2019 Silver Mercury — Short list \\ Best integrated marketing campaign"
+    ],
+    share: true,
+    media: [
+      {
+        type: "video",
+        src: "https://player.vimeo.com/3d3c32e9-8f44-4dcf-a5c5-8a6b8f083f6a",
+        order: "1"
+      },
+      {
+        type: "img",
+        src: "https://tsknoff.ru/tbwasite/assets/work/Clio_HD.jpg",
+        order: "1"
+      },
+      {
+        type: "img",
+        src: "https://tsknoff.ru/tbwasite/assets/work/Datsun_Workout_leaflet_mockup_r12-1329.jpg",
+        order: "2"
+      },
+      {
+        type: "img",
+        src: "https://tsknoff.ru/tbwasite/assets/work/pasted-image-1780.jpg",
+        order: "3"
+      }
+    ]
+  }
+}
