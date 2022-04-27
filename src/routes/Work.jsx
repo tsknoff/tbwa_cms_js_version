@@ -26,6 +26,11 @@ const Work = () => {
         {id: 2, preview: 'https://tbwa.ru/assets/work/%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F_cover.jpg',  client: 'Delivery Club', title: 'Велосипедизация', status: 1, link: ''},
         {id: 3, preview: 'https://tbwa.ru/assets/work/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-flex2.jpg', client: 'Flexity', title: 'Пространство, чтобы процветать', status: 0, link: ''},
         {id: 4, preview: 'https://tbwa.ru/assets/work/CORAL-TRAVEL-%D1%8F%D1%85%D1%82%D0%B0-2.jpg', client: 'Coral Travel', title: 'Яхта. Океан. Ты', status: 1, link: ''},
+        {id: 5, preview: 'https://tbwa.ru/assets/work/cover-b.jpg',  client: 'Nissan', title: 'Запуск нового Nissan Pathfinder в России', status: 1,  link: ''},
+        {id: 6, preview: 'https://tbwa.ru/assets/work/%D0%B2%D0%B5%D0%BB%D0%BE%D1%81%D0%B8%D0%BF%D0%B5%D0%B4%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F_cover.jpg',  client: 'Delivery Club', title: 'Велосипедизация', status: 1, link: ''},
+        {id: 7, preview: 'https://tbwa.ru/assets/work/%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-flex2.jpg', client: 'Flexity', title: 'Пространство, чтобы процветать', status: 0, link: ''},
+        {id: 8, preview: 'https://tbwa.ru/assets/work/CORAL-TRAVEL-%D1%8F%D1%85%D1%82%D0%B0-2.jpg', client: 'Coral Travel', title: 'Яхта. Океан. Ты', status: 1, link: ''},
+
     ])
 
     const onWorkItemsChange = (newWorkItems) => {
@@ -105,7 +110,7 @@ const Work = () => {
     }
 
     return (
-        <Paper sx={{ maxWidth: 1200, margin: 'auto', overflow: 'auto' }}>
+        <React.Fragment>
             <AppBar
                 position="static"
                 color="default"
@@ -206,7 +211,7 @@ const Work = () => {
                     container={() => containerRef.current}
                 />
             </Grid>
-        </Paper>
+        </React.Fragment>
     );
 };
 

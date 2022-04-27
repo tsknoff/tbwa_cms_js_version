@@ -67,7 +67,7 @@ const Single = () => {
         )
     }
     return (
-        <Paper sx={{ maxWidth: 800, margin: 'auto', overflow: 'auto' }}>
+        <React.Fragment>
             <AppBar
                 position="static"
                 color="default"
@@ -147,7 +147,7 @@ const Single = () => {
                     container={() => containerRef.current}
                 />
             </Grid>
-        </Paper>
+        </React.Fragment>
     );
 };
 

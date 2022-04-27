@@ -102,7 +102,7 @@ const Assets = () => {
         },
     ];
     return (
-        <Paper sx={{ maxWidth: 1200, margin: 'auto', overflow: 'auto' }}>
+        <React.Fragment>
             <AppBar
                 position="static"
                 color="default"
@@ -147,7 +147,7 @@ const Assets = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
-            <ImageList sx={{ maxWidth: '800px', margin: 'auto', height: 'auto' }} cols={3} gap={12}>
+            <ImageList sx={{ maxWidth: '800px', margin: 'auto', height: 'auto', paddingTop: "30px" }} cols={3} gap={12}>
                 {itemData.map((item) => (
                     <ImageListItem key={item.img}>
                         <img
@@ -159,7 +159,7 @@ const Assets = () => {
                     </ImageListItem>
                 ))}
             </ImageList>
-        </Paper>
+        </React.Fragment>
     );
 };
 
