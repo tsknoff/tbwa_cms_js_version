@@ -1,0 +1,21 @@
+{
+  pageID: 1,
+  type: "case",
+  html_id: "article-content",
+  blockName: "Article content",
+  params: {
+    body_title: 'A new dimension of power',
+    body_text: '',
+    awards: [ "2019 CLIO Sports — Silver \\ Social Media",
+      "2019 CLIO Sports — Bronze \\ Integrated Campaign",
+      "2019 Silver Mercury — Gold \\ Best sport-marketing/cyber sport marketing campaign",
+      "2019 Silver Mercury — Short list \\ Best integrated marketing campaign"] ,
+    share: true,
+    media: [
+      {type: "video", src: "https://player.vimeo.com/3d3c32e9-8f44-4dcf-a5c5-8a6b8f083f6a",  order: "1"},
+      {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/Clio_HD.jpg",  order: "2"},
+      {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/Datsun_Workout_leaflet_mockup_r12-1329.jpg",  order: "3"},
+      {type: "img", src: "https://tsknoff.ru/tbwasite/assets/work/pasted-image-1780.jpg",  order: "4"},
+    ],
+  },
+}
