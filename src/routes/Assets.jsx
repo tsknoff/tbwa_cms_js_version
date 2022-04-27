@@ -136,7 +136,7 @@ const Assets = () => {
                         </Grid>
                         <Grid item>
                             <Button variant="contained" sx={{ mr: 1 }}>
-                                Add new asset
+                                Upload asset
                             </Button>
                             <Tooltip title="Reload">
                                 <IconButton>
