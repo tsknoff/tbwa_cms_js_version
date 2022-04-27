@@ -66,12 +66,12 @@ export default function Navigator(props) {
                 <ListItem sx={{ ...item, ...itemCategory, fontSize: 22 }}>
                     TBWA\CMS
                 </ListItem>
-                <ListItem sx={{ ...item, ...itemCategory }}>
-                    <ListItemIcon>
-                        <HomeIcon />
-                    </ListItemIcon>
-                    <ListItemText>Home</ListItemText>
-                </ListItem>
+                {/*<ListItem sx={{ ...item, ...itemCategory }}>*/}
+                {/*    <ListItemIcon>*/}
+                {/*        <HomeIcon />*/}
+                {/*    </ListItemIcon>*/}
+                {/*    <ListItemText>Home</ListItemText>*/}
+                {/*</ListItem>*/}
                 {categories.map(({ id, children }) => (
                     <Box key={id} sx={{ bgcolor: '#202020' }}>
                      {/*<Box key={id} >*/}

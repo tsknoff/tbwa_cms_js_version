@@ -55,7 +55,7 @@ const OurTeam = () => {
                 <Grid item xs={3} align="center">
                     {item.title}
                 </Grid>
-                <Grid item xs={2} align="right">
+                <Grid item xs={2} align="center">
                     <IconButton>
                         <EditIcon color="inherit" sx={{ display: 'block' }} />
                     </IconButton>

@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
 import PreviewIcon from '@mui/icons-material/Preview';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import EditIcon from '@mui/icons-material/Edit';
-import {ListItem, Switch} from "@mui/material";
+import {ListItem, MenuItem, Select, SelectChangeEvent, Switch} from "@mui/material";
 import DraggableList from "react-draggable-list";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -28,11 +28,16 @@ const Work = () => {
         {id: 4, preview: 'https://tbwa.ru/assets/work/CORAL-TRAVEL-%D1%8F%D1%85%D1%82%D0%B0-2.jpg', client: 'Coral Travel', title: 'Яхта. Океан. Ты', status: 1, link: ''},
     ])
 
-     const onWorkItemsChange = (newWorkItems) => {
+    const onWorkItemsChange = (newWorkItems) => {
          set_workItems(newWorkItems);
      };
-
     const containerRef = useRef();
+
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event: SelectChangeEvent) => {
+        setAge(event.target.value);
+    };
 
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
     const WorkItem = ({item, itemSelected, dragHandleProps}) => {
@@ -133,6 +138,19 @@ const Work = () => {
                             />
                         </Grid>
                         <Grid item>
+                            {/*<Tooltip title={"Change Language"}>*/}
+                            {/*    <Select*/}
+                            {/*        labelId="demo-simple-select-label"*/}
+                            {/*        id="demo-simple-select"*/}
+                            {/*        value={age}*/}
+                            {/*        label="Age"*/}
+                            {/*        onChange={handleChange}*/}
+                            {/*    >*/}
+                            {/*        <MenuItem value={10}>Ten</MenuItem>*/}
+                            {/*        <MenuItem value={20}>Twenty</MenuItem>*/}
+                            {/*        <MenuItem value={30}>Thirty</MenuItem>*/}
+                            {/*    </Select>*/}
+                            {/*</Tooltip>*/}
                             <Button variant="contained" sx={{ mr: 1 }}>
                                 Add new case
                             </Button>

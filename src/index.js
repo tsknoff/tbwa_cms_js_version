@@ -14,6 +14,7 @@ import Work from "./routes/Work";
 import NotFoundPage from "./routes/NotFoundPage";
 import OurTeam from "./routes/OurTeam";
 import Assets from "./routes/Assets";
+import Editor from "./routes/Editor";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,10 +22,12 @@ root.render(
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<App />}>
+                  <Route index element={<Single />} />
                   <Route path="single" element={<Single />} />
                   <Route path="work" element={<Work />} />
                   <Route path="our-team" element={<OurTeam />} />
                   <Route path="assets" element={<Assets />} />
+                  <Route path="editor" element={<Editor />} />
                   <Route path="*" element={<NotFoundPage />} />
               </Route>
           </Routes>
