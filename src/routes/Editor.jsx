@@ -3,42 +3,21 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import Box from "@mui/material/Box";
 import DraggableList from "react-draggable-list";
 import Paper from "@mui/material/Paper";
-import EditIcon from "@mui/icons-material/Edit";
-import PreviewIcon from "@mui/icons-material/Preview";
-import {
-    CardActions,
-    CardContent,
-    FormControl, FormControlLabel, FormGroup,
-    FormHelperText,
-    Input,
-    InputLabel,
-    Switch,
-    TextareaAutosize
-} from "@mui/material";
+import {FormControl, FormControlLabel, Switch,} from "@mui/material";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import {useRef, useState} from "react";
-import Divider from "@mui/material/Divider";
-import ArticleContent from "../components/blocks/ArticleContent";
-import {Link} from "react-router-dom";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import {useState} from "react";
 
 const Editor = () => {
     const [editBlocks, set_editBlocks] = useState([
         {
             pageID: 1,
-            type: "case",
             html_id: "article-content",
             blockName: "Article content",
             params: {
@@ -74,9 +53,8 @@ const Editor = () => {
                 body_text: '',
             }},
     ])
-    const label = { inputProps: { 'aria-label': 'Switch demo' } };
-    const BlockItem = ({item, itemSelected, dragHandleProps}) => {
 
+    const BlockItem = ({item,dragHandleProps}) => {
         const { onMouseDown, onTouchStart } = dragHandleProps;
 
         return(
@@ -108,12 +86,6 @@ const Editor = () => {
                                             console.log("mouseDown");
                                             // document.body.style.overflow = "hidden";
                                             onMouseDown(e);
-                                        }}
-                                        onTouchEnd={(e) => {
-                                            document.body.style.overflow = "visible";
-                                        }}
-                                        onMouseUp={() => {
-                                            document.body.style.overflow = "visible";
                                         }}
                                     />
                                 </IconButton>
@@ -169,9 +141,8 @@ const Editor = () => {
     const onBlockItemsChange = (newEditBlocks) => {
         set_editBlocks(newEditBlocks);
     };
-    const containerRef = useRef();
+
     return (
-        // <Paper sx={12} >
         <React.Fragment>
             <AppBar
                 position="static"
@@ -204,12 +175,11 @@ const Editor = () => {
                 </Toolbar>
             </AppBar>
             <Grid container
-                  ref={containerRef}
                   paddingTop="30px"
                   paddingBottom="30px"
                   direction="column"
             >
-                {editBlocks.length == 0 &&
+                {editBlocks.length === 0 &&
                     <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
                         No any blocks yet
                     </Typography>
@@ -219,10 +189,8 @@ const Editor = () => {
                     template={BlockItem}
                     list={editBlocks}
                     onMoveEnd={(newList) => onBlockItemsChange(newList)}
-                    container={() => containerRef.current}
                 />
             </Grid>
-        {/*// </Paper>*/}
     </React.Fragment>
     );
 };

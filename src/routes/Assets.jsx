@@ -9,10 +9,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import DraggableList from "react-draggable-list";
-import Paper from "@mui/material/Paper";
 
 const Assets = () => {
     const itemData = [
@@ -101,6 +98,7 @@ const Assets = () => {
             title: 'Fern',
         },
     ];
+
     return (
         <React.Fragment>
             <AppBar

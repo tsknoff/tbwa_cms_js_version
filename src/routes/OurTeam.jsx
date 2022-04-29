@@ -11,13 +11,8 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import DraggableList from "react-draggable-list";
-import Paper from "@mui/material/Paper";
-import {useRef, useState} from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import PreviewIcon from "@mui/icons-material/Preview";
-import {ListItem, Switch} from "@mui/material";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import List from "@mui/material/List";
+import {useState} from "react";
+import HeroItem from "../components/our-team/HeroItem";
 
 const OurTeam = () => {
 
@@ -30,74 +25,9 @@ const OurTeam = () => {
         {id: 6, preview: 'https://tbwa.ru/assets/about/%D0%A1%D0%BE%D1%80%D0%BE%D0%BA%D0%B8%D0%BD%D0%B0-600%D1%85900_2022-01-10-093437_kqfc.jpg',  title: 'Julia Savina', status: 1, link: ''},
 
     ])
-
     const onHeroItemsChange = (newHeroItems) => {
         set_heroItems(newHeroItems);
     };
-
-    const containerRef = useRef();
-
-    const label = { inputProps: { 'aria-label': 'Switch demo' } };
-    const HeroItem = ({item, itemSelected, dragHandleProps}) => {
-
-        const { onMouseDown, onTouchStart } = dragHandleProps;
-
-        return(
-            <Grid item container
-                  key={item.id}
-                  xs={12}
-                  sx={{height: 200 }}
-                  direction="row"
-                  alignItems="center">
-                <Grid item xs={2}>
-                    <img alt="hero preview" width="120px" src={item.preview} />
-                </Grid>
-                <Grid item xs={3} align="center">
-                    {item.title}
-                </Grid>
-                <Grid item xs={2} align="center">
-                    <IconButton>
-                        <EditIcon color="inherit" sx={{ display: 'block' }} />
-                    </IconButton>
-                    <IconButton>
-                        <PreviewIcon color="inherit" sx={{ display: 'block' }} />
-                    </IconButton>
-                </Grid>
-                <Grid item xs={2} align="right">
-                    {item.status == 0 &&
-                        <Switch {...label} />
-                    }
-                    {item.status == 1 &&
-                        <Switch {...label} defaultChecked/>
-                    }
-                </Grid>
-                <Grid item xs={3}>
-                    <IconButton>
-                        <DragIndicatorIcon
-                            color="inherit"
-                            sx={{ display: 'block' }}
-                            onTouchStart={(e) => {
-                                e.preventDefault();
-                                // document.body.style.overflow = "hidden";
-                                onTouchStart(e);
-                            }}
-                            onMouseDown={(e) => {
-                                console.log("mouseDown");
-                                // document.body.style.overflow = "hidden";
-                                onMouseDown(e);
-                            }}
-                            onTouchEnd={(e) => {
-                                document.body.style.overflow = "visible";
-                            }}
-                            onMouseUp={() => {
-                                document.body.style.overflow = "visible";
-                            }}
-                        />
-                    </IconButton>
-                </Grid>
-            </Grid>
-        )
-    }
 
     return (
         <React.Fragment>
@@ -168,11 +98,10 @@ const OurTeam = () => {
                 </Grid>
             </Box>
             <Grid container
-                  ref={containerRef}
                   xs={12}
                   direction="column"
             >
-                {heroItems.length == 0 &&
+                {heroItems.length === 0 &&
                     <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
                         Any persons in team is founded yet
                     </Typography>
@@ -182,7 +111,6 @@ const OurTeam = () => {
                     template={HeroItem}
                     list={heroItems}
                     onMoveEnd={(newList) => onHeroItemsChange(newList)}
-                    container={() => containerRef.current}
                 />
             </Grid>
         </React.Fragment>
