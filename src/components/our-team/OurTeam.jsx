@@ -12,7 +12,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import DraggableList from "react-draggable-list";
 import {useState} from "react";
-import HeroItem from "../components/our-team/HeroItem";
+import HeroItem from "./HeroItem";
 
 const OurTeam = () => {
 

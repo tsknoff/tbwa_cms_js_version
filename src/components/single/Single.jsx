@@ -12,7 +12,7 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import DraggableList from "react-draggable-list";
-import SingleItem from "../components/single/SingleItem";
+import SingleItem from "./SingleItem";
 
 const Single = () => {
     const [singleItems, set_singleItems] = useState([

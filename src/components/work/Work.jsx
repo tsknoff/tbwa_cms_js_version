@@ -11,7 +11,11 @@ import RefreshIcon from "@mui/icons-material/Refresh";
 import DraggableList from "react-draggable-list";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import WorkItem from "../components/work/WorkItem";
+import WorkItem from "./WorkItem";
+import List from "@mui/material/List";
+import {useDispatch, useSelector} from "react-redux";
+import {useAppDispatch, useAppSelector} from "../../store/hooks/redux";
+import {userSlice} from "../../store/reducers/UserSlice";
 
 const Work = () => {
     const [workItems, set_workItems] = useState([
@@ -28,6 +32,10 @@ const Work = () => {
     const onWorkItemsChange = (newWorkItems) => {
          set_workItems(newWorkItems);
      };
+
+    const {count} = useAppSelector(state=> state.userReducer)
+    const {increment} = userSlice.actions;
+    const dispatch = useAppDispatch()
 
     return (
         <React.Fragment>
@@ -100,21 +108,21 @@ const Work = () => {
                     </Grid>
                 </Grid>
             </Box>
-            <Grid container
-                  direction="column"
-            >
-                {workItems.length === 0 &&
-                    <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">
-                        No work cases yet
-                    </Typography>
-                }
+            <List
+                sx={{ width: '100%', maxWidth: 1, bgcolor: 'background.paper' }}>
+                {/*{workItems.length === 0 &&*/}
+                {/*    <Typography sx={{ my: 5, mx: 2 }} color="text.secondary" align="center">*/}
+                {/*        No work cases yet*/}
+                {/*    </Typography>*/}
+                {/*}*/}
+
                 <DraggableList
                     itemKey="id"
                     template={WorkItem}
                     list={workItems}
                     onMoveEnd={(newList) => onWorkItemsChange(newList)}
                 />
-            </Grid>
+            </List>
         </React.Fragment>
     );
 };
